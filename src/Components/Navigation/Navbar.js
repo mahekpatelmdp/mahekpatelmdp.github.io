@@ -5,7 +5,6 @@ import NavItems, { NAV_LINKS } from './NavItems';
 import { Modal } from '../UI/Modal';
 import { CgClose } from 'react-icons/cg';
 import ThemeToggle from '../UI/ThemeToggle';
-import Mark from '../UI/Mark';
 
 // Tracks which section is in the middle of the screen so its nav link can be highlighted.
 const useActiveSection = () => {
@@ -50,7 +49,6 @@ const NavBar = () => {
   return (
     <header className={`site-header sticky top-0 z-50 px-6 md:px-10 ${isScrolled ? 'is-scrolled' : ''}`}>
       <a href="#home" className="brand" aria-label="Mahek Patel, back to top">
-        <Mark className="brand-mark" />
         Mahek Patel
       </a>
 
