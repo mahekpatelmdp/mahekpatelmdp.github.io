@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.cf4c537f.css",
-    "main.js": "/static/js/main.826c0bda.js",
+    "main.css": "/static/css/main.731cb284.css",
+    "main.js": "/static/js/main.f4a9e307.js",
     "static/js/787.3154cf65.chunk.js": "/static/js/787.3154cf65.chunk.js",
     "static/media/1781826321052.png": "/static/media/1781826321052.0d8245c1161804f190b5.png",
     "static/media/01-pharma-life-sciences.svg": "/static/media/01-pharma-life-sciences.651f46b85cbaa62c2ba532d0ccaf9ca6.svg",
     "static/media/02-healthcare.svg": "/static/media/02-healthcare.da122c36f31c1c0244d5a3c5e194ba4f.svg",
     "index.html": "/index.html",
-    "main.cf4c537f.css.map": "/static/css/main.cf4c537f.css.map",
-    "main.826c0bda.js.map": "/static/js/main.826c0bda.js.map",
+    "main.731cb284.css.map": "/static/css/main.731cb284.css.map",
+    "main.f4a9e307.js.map": "/static/js/main.f4a9e307.js.map",
     "787.3154cf65.chunk.js.map": "/static/js/787.3154cf65.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cf4c537f.css",
-    "static/js/main.826c0bda.js"
+    "static/css/main.731cb284.css",
+    "static/js/main.f4a9e307.js"
   ]
 }
