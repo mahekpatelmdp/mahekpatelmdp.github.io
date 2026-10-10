@@ -1,12 +1,89 @@
+/* transparent over the hero, frosted once the page scrolls */
 .site-header {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 24px;
+    min-height: 72px;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.site-header.is-scrolled {
     background: var(--surface-navbar);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 1px 24px rgba(0, 0, 0, 0.18);
-    min-height: 64px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom-color: var(--rule);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    line-height: 1;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+/* mark draws itself on load: arch traces, person rises, dot pops */
+.brand-mark {
+    width: 26px;
+    height: 31px;
+    color: var(--accent);
+    overflow: visible;
+}
+
+.brand-mark .mark-arch {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: mark-draw 1.1s var(--ease) 0.2s forwards;
+}
+
+.brand-mark .mark-person {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: mark-rise 0.8s var(--ease) 0.7s forwards;
+}
+
+.brand-mark .mark-dot {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scale(0);
+    animation: mark-pop 0.5s var(--ease) 1.2s forwards;
+}
+
+.brand:hover .brand-mark .mark-dot {
+    animation: mark-pop 0.5s var(--ease) forwards, mark-blink 1.2s ease-in-out 0.5s infinite;
+}
+
+@keyframes mark-draw {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes mark-rise {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mark-pop {
+    to { transform: scale(1); }
+}
+
+@keyframes mark-blink {
+    50% { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .brand-mark .mark-arch,
+    .brand-mark .mark-person,
+    .brand-mark .mark-dot {
+        animation: none;
+        stroke-dashoffset: 0;
+        opacity: 1;
+        transform: none;
+    }
 }
 
 .site-header-actions {
@@ -15,30 +92,56 @@
     gap: 16px;
 }
 
+.resume-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    background: var(--text-primary);
+    color: var(--bg);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s var(--ease);
+}
+
+.resume-pill:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+}
+
+.resume-pill span {
+    transition: transform 0.25s var(--ease);
+}
+
+.resume-pill:hover span {
+    transform: translateY(2px);
+}
+
 .theme-toggle {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    border: 1px solid var(--border-color-strong);
+    border: 1px solid var(--rule-strong);
     background: transparent;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     cursor: pointer;
-    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .theme-toggle:hover {
-    border-color: var(--gold-500);
-    color: var(--gold-400);
-    transform: translateY(-2px);
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .navigation-items {
     display: flex;
-    gap: 28px;
+    gap: 32px;
     align-items: center;
 }
 
@@ -48,7 +151,7 @@
 
 .mobile-navigation .nav-links {
     margin: 10px 0;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 .desktop-navigation {
@@ -56,23 +159,42 @@
 }
 
 .nav-links {
+    position: relative;
     color: var(--text-secondary);
     text-decoration: none;
-    padding: 6px 4px;
-    transition: color 0.2s;
-    font-size: 0.95rem;
+    padding: 4px 0;
+    font-size: 0.85rem;
     font-weight: 500;
-    letter-spacing: 0.02em;
     cursor: pointer;
+    transition: color 0.2s ease;
 }
 
-.nav-links:hover {
-    color: var(--gold-400);
+.nav-links::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s var(--ease);
+}
+
+.nav-links:hover,
+.nav-links.active {
+    color: var(--text-primary);
+}
+
+.nav-links:hover::after,
+.nav-links.active::after {
+    transform: scaleX(1);
 }
 
 .hamburger-menu {
     color: var(--text-primary);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     background: none;
     border: none;
     cursor: pointer;

@@ -1,60 +1,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-/* ---- light theme (default) ---- */
+/* Warm, mostly neutral palette with a single sand accent used sparingly. */
+
+/* ---- dark theme (default) ---- */
 :root {
-    --navy-950: #eef1f4;
-    --navy-900: #ffffff;
-    --navy-800: #f4f6f8;
-    --navy-700: #e8ebee;
-    --navy-600: #d9dee2;
-    --gold-300: #a6ecdf;
-    --gold-400: #12876f;
-    --gold-500: #0d715c;
-    --gold-600: #095846;
+    color-scheme: dark;
 
-    --text-primary: #14181c;
-    --text-secondary: #4b535c;
-    --text-tertiary: #737b85;
+    --bg: #0f0e0d;
+    --bg-raised: #161513;
+    --text-primary: #ece9e4;
+    --text-secondary: #a19d96;
+    --text-tertiary: #6e6a64;
+    --accent: #d8b98a;
+    --accent-soft: rgba(216, 185, 138, 0.14);
+    --rule: rgba(236, 233, 228, 0.1);
+    --rule-strong: rgba(236, 233, 228, 0.2);
+    --surface-navbar: rgba(15, 14, 13, 0.78);
+    --spotlight: rgba(216, 185, 138, 0.07);
+    --grain-opacity: 0.06;
 
-    --border-color: rgba(20, 24, 28, 0.1);
-    --border-color-strong: rgba(20, 24, 28, 0.18);
-    --surface-tint: rgba(20, 24, 28, 0.035);
-    --surface-navbar: rgba(255, 255, 255, 0.75);
+    --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --max-width: 1120px;
 }
 
-/* ---- dark theme (opt-in via toggle) ---- */
-:root[data-theme='dark'] {
-    --navy-950: #0a0d10;
-    --navy-900: #10141a;
-    --navy-800: #171d24;
-    --navy-700: #1f262e;
-    --navy-600: #2a323c;
-    --gold-300: #7fd9c4;
-    --gold-400: #2bbfa3;
-    --gold-500: #189e85;
-    --gold-600: #12795f;
+/* ---- light theme (opt-in via toggle) ---- */
+:root[data-theme='light'] {
+    color-scheme: light;
 
-    --text-primary: #edf0f3;
-    --text-secondary: #a3aab5;
-    --text-tertiary: #767e89;
-
-    --border-color: rgba(237, 240, 243, 0.08);
-    --border-color-strong: rgba(237, 240, 243, 0.16);
-    --surface-tint: rgba(237, 240, 243, 0.045);
-    --surface-navbar: rgba(10, 13, 16, 0.72);
+    --bg: #f6f3ee;
+    --bg-raised: #efebe4;
+    --text-primary: #1c1a17;
+    --text-secondary: #5c5750;
+    --text-tertiary: #8a847b;
+    --accent: #9a6b2f;
+    --accent-soft: rgba(154, 107, 47, 0.1);
+    --rule: rgba(28, 26, 23, 0.1);
+    --rule-strong: rgba(28, 26, 23, 0.2);
+    --surface-navbar: rgba(246, 243, 238, 0.85);
+    --spotlight: rgba(154, 107, 47, 0.06);
+    --grain-opacity: 0.05;
 }
 
 html {
     scroll-behavior: smooth;
-}
-
-.main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    scroll-padding-top: 72px;
 }
 
 html, body, .main, #root {
@@ -67,10 +60,13 @@ html, body {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--navy-900);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    background: var(--bg);
     color: var(--text-primary);
-    transition: background-color 0.25s ease, color 0.25s ease;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 * {
@@ -78,15 +74,119 @@ body {
 }
 
 ::selection {
-    background: var(--gold-500);
-    color: var(--navy-900);
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.app-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* flex column children shrink to their content; keep every section on one grid */
+.app-content > section {
+    width: 100%;
+}
+
+/* shared page section: centered column with generous vertical rhythm */
+.page-section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 6rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .page-section {
+        padding: 8rem 2.5rem;
+    }
+}
+
+/* small uppercase label above a section title */
+.eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.section-title {
+    margin-top: 0.75rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+}
+
+.section-intro {
+    margin-top: 1.25rem;
+    max-width: 40rem;
+    color: var(--text-secondary);
+}
+
+/* text link with an underline that grows on hover */
+.text-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 100% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 2px;
+    transition: color 0.2s ease, background-size 0.3s var(--ease);
+}
+
+.text-link:hover {
+    color: var(--accent);
+}
+
+/* ---- buttons ---- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.2s var(--ease), background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--text-primary);
+    color: var(--bg);
+}
+
+.btn-primary:hover {
+    background: var(--accent);
+}
+
+.btn-quiet {
+    border: 1px solid var(--rule-strong);
+    color: var(--text-primary);
+}
+
+.btn-quiet:hover {
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 /* ---- scroll reveal ---- */
 .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateY(20px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
 }
 
 .reveal.in-view {
@@ -94,42 +194,39 @@ body {
     transform: translateY(0);
 }
 
-/* ---- label used above each section heading ---- */
-.section-badge {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    max-width: 100%;
-    padding-left: 18px;
-    color: var(--text-tertiary);
-    font-weight: 600;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-align: center;
-    position: relative;
-}
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 
-.section-badge::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 10px;
-    height: 2px;
-    background: var(--gold-500);
-}
-
-@media (min-width: 480px) {
-    .section-badge {
-        font-size: 0.82rem;
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 }
 
-.section-badge .badge-highlight {
-    color: var(--text-primary);
-    font-weight: 700;
+/* divider that draws in from the left when its row scrolls into view */
+.entry::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--rule);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.2s var(--ease) 0.15s;
+}
+
+.entry.in-view::after {
+    transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .entry::after {
+        transform: none;
+        transition: none;
+    }
 }

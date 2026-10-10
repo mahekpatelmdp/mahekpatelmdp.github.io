@@ -1,0 +1,27 @@
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 900px) {
+    .about-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+        gap: 5rem;
+    }
+
+    .about-head {
+        position: sticky;
+        top: 6rem;
+        align-self: start;
+    }
+}
+
+.about-copy p {
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+}
+
+.about-copy p + p {
+    margin-top: 1.25rem;
+}

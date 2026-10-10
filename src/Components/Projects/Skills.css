@@ -1,92 +1,17 @@
-.skills-section {
-    max-width: 1280px;
-    margin: 0 auto;
+.toolkit-row {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--rule);
 }
 
-.skills-groups {
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-}
-
-.skills-group {
-    padding-bottom: 1.75rem;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.skills-group:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.skills-group h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-}
-
-.skills-group h3 .accent {
-    color: var(--gold-500);
-}
-
-/* ---- tools: icon + label chips ---- */
-.skills-chip-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.skills-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    background: var(--navy-800);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 0.45rem 1rem 0.45rem 0.45rem;
-    color: var(--text-primary);
-    font-size: 0.88rem;
+.toolkit-row dt {
+    font-size: 0.92rem;
     font-weight: 500;
-    transition: border-color 0.2s ease;
+    color: var(--text-primary);
 }
 
-.skills-chip:hover {
-    border-color: rgba(24, 158, 133, 0.45);
-}
-
-.skills-chip-icon {
-    width: 28px;
-    height: 28px;
-    min-width: 28px;
-    border-radius: 6px;
-    background: rgba(24, 158, 133, 0.14);
-    color: var(--gold-400);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.toolkit-row dd {
+    margin-top: 0.35rem;
     font-size: 0.85rem;
-}
-
-/* ---- methods / healthcare: plain tag cloud ---- */
-.skills-tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.65rem;
-}
-
-.skills-tag {
-    background: var(--surface-tint);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 0.4rem 0.9rem;
+    line-height: 1.7;
     color: var(--text-secondary);
-    font-size: 0.82rem;
-    font-weight: 500;
-    transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.skills-tag:hover {
-    border-color: rgba(24, 158, 133, 0.45);
-    color: var(--text-primary);
 }

@@ -1,5 +1,5 @@
 import './Projects.css';
-import SectionBadge from '../UI/SectionBadge';
+import { FaGithub } from 'react-icons/fa';
 import Reveal from '../UI/Reveal';
 import bannerPharma from '../../assets/01-pharma-life-sciences.svg';
 import bannerHealthcare from '../../assets/02-healthcare.svg';
@@ -105,48 +105,42 @@ const PROJECTS = [
 
 const Projects = () => {
   return (
-    <div id="projects" className="projects-wrapper">
-      <Reveal>
-        <SectionBadge label="Projects" />
+    <section id="projects" className="page-section">
+      <Reveal className="projects-head">
+        <div>
+          <span className="eyebrow">Projects</span>
+          <h2 className="section-title">Projects</h2>
+        </div>
+        <a href="https://github.com/mahekpatelmdp" target="_blank" rel="noopener noreferrer" className="github-profile">
+          <FaGithub aria-hidden="true" /> github.com/mahekpatelmdp
+        </a>
       </Reveal>
 
-      <div className="projects-grid">
+      <div className="project-grid">
         {PROJECTS.map((project, idx) => (
-          <Reveal
-            key={project.title}
-            delay={(idx % 2) * 100}
-            className="project-card"
-          >
-            {/* <div className="project-banner">
-              <img src={project.image} alt={`${project.title} — sample dashboard`} loading="lazy" />
-            </div> */}
-
-            <span className="project-tag">{project.tag}</span>
-            <h3 className="project-title">{project.title}</h3>
-
-            <p className="project-line">{project.summary}</p>
-
-            <div className="project-tools">
-              {project.tools.map((tool) => (
-                <span key={tool} className="tool-chip">{tool}</span>
-              ))}
+          <Reveal as="article" key={project.title} delay={(idx % 3) * 80} className="project">
+            <div className="project-top">
+              <span className="project-tag">{project.tag}</span>
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-github"
+                  aria-label={`${project.title} on GitHub`}
+                  title="View on GitHub"
+                >
+                  <FaGithub />
+                </a>
+              )}
             </div>
-
-            {project.link && (
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-file-link">
-                View on GitHub
-              </a>
-            )}
-
-            {project.file && (
-              <a href={project.file} download className="project-file-link">
-                {project.fileLabel}
-              </a>
-            )}
+            <h3 className="project-title">{project.title}</h3>
+            <p className="project-summary">{project.summary}</p>
+            <p className="project-tools">{project.tools.join(' · ')}</p>
           </Reveal>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

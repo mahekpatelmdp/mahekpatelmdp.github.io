@@ -1,7 +1,12 @@
-.background-section {
-    max-width: 1280px;
-    margin: 0 auto;
-    background: var(--navy-800);
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
+.background-extras {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+}
+
+@media (min-width: 900px) {
+    .background-extras {
+        grid-template-columns: 1fr 1fr;
+    }
 }

@@ -6,9 +6,10 @@
 }
 
 .error-404-title {
+    font-family: var(--font-display);
     font-size: 100px;
-    font-weight: 800;
-    color: var(--gold-500);
+    font-weight: 400;
+    color: var(--accent);
 }
 
 .error-404-contents p {

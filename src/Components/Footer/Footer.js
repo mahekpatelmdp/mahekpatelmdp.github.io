@@ -6,6 +6,7 @@ const Footer = () => {
     <footer>
       <div className="footer-inner">
         <span>© {currentYear} Mahek Patel</span>
+        <span>Vancouver, BC</span>
       </div>
     </footer>
   );

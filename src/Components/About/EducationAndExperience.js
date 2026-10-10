@@ -1,14 +1,45 @@
+import { useState } from 'react';
 import './EducationAndExperience.css';
-import Timeline from '../UI/Timeline';
 import Reveal from '../UI/Reveal';
-import { FaGraduationCap, FaTooth, FaRobot, FaFlask, FaBriefcase, FaChartLine } from 'react-icons/fa';
+
+const COURSES_SHOWN = 5;
+
+const EXPERIENCE = [
+  {
+    when: '2026 to now · Remote',
+    role: 'Healthcare LLM Evaluator',
+    org: 'Outlier',
+    text: 'Writing step-by-step answers to public health and medical questions, and evaluating model outputs for accuracy, misinformation and health equity.',
+  },
+  {
+    when: 'Jan 2025 to Oct 2025 · Springfield, IL',
+    role: 'Research Coordinator',
+    org: 'University of Illinois Springfield',
+    text: 'Ran data collection, analysis and database management for ongoing demographic studies, and worked with faculty to present the findings.',
+  },
+  {
+    when: 'Sep 2023 to Nov 2024 · Seattle, WA',
+    role: 'Clinical Coordinator',
+    org: 'Smileworks Dental Clinic',
+    text: 'Coordinated patient care across local facilities with multidisciplinary teams, and handled scheduling, resource planning and reporting.',
+  },
+  {
+    when: 'Aug 2022 to Sep 2023 · India',
+    role: 'Dentist',
+    org: 'Vinayak Dental Clinic',
+    text: 'Performed restorations, extractions, scaling, root canals and prosthetic fittings, using ClareDent for scheduling, charting and treatment plans.',
+  },
+];
 
 const EDUCATION = [
   {
-    icon: <FaGraduationCap />,
-    title: "Master's, Healthcare Informatics",
-    subtitle: 'University of Illinois Springfield, USA',
+    when: '2024 to 2026 · Springfield, IL',
+    role: 'M.S. Healthcare Informatics',
+    org: 'University of Illinois Springfield',
+    text: 'GPA 3.85.',
     courses: [
+      'Healthcare Analytics',
+      'Business Analysis',
       'Survey of U.S. Healthcare System',
       'Managing Healthcare Operations',
       'Introduction to Healthcare Informatics',
@@ -22,9 +53,9 @@ const EDUCATION = [
     ],
   },
   {
-    icon: <FaTooth />,
-    title: 'Bachelor of Dental Surgery (B.D.S)',
-    subtitle: 'Dharmsinh Desai University, Nadiad, India',
+    when: 'Jun 2018 to Aug 2023 · Nadiad, India',
+    role: 'Bachelor of Dental Surgery (BDS)',
+    org: 'Dharmsinh Desai University',
     courses: [
       'General Human Anatomy',
       'General Human Physiology & Biochemistry',
@@ -48,68 +79,67 @@ const EDUCATION = [
   },
 ];
 
-const EXPERIENCE = [
-  {
-    icon: <FaChartLine />,
-    title: 'Data Analyst',
-    subtitle: 'Freelancer · Self-employed',
-    duration: 'Jan 2026 - Present',
-    bullets: [
-      'Delivered data-driven analysis to inform strategic decision-making for small business clients across multiple industries.',
-      'Built interactive dashboards and financial reporting tools, surfacing actionable insights on pricing strategy, process optimization, and report automation to drive operational efficiency.',
-    ],
-  },
-  {
-    icon: <FaRobot />,
-    title: 'AI Training Specialist',
-    subtitle: 'Outlier',
-    duration: '2026 – Present',
-    bullets: [
-      'Led data quality workflows for complex multimodal datasets, identifying and resolving defects through human-in-the-loop annotation frameworks.',
-      'Designed and implemented QA protocols and standardized documentation practices, improving data accuracy, consistency, and reporting integrity across projects.',
-    ],
-  },
-  {
-    icon: <FaFlask />,
-    title: 'Research Coordinator',
-    subtitle: 'University of Illinois Springfield',
-    duration: 'Jan 2025 - Oct 2025',
-    bullets: [
-      'Oversaw end-to-end data collection, analysis, and database management, ensuring accuracy and integrity of research documentation.',
-      'Partnered with faculty and cross-functional teams to advance ongoing studies, delivering reports and presentations that communicated key research findings.',
-    ],
-  },
-  {
-    icon: <FaBriefcase />,
-    title: 'Business Analyst',
-    subtitle: 'Santram Pharma Pvt Ltd, India',
-    duration: 'Sep 2023 - Jan 2025',
-    bullets: [
-      'Analyzed business data and developed reports and dashboards to track key metrics and support decision-making.',
-      'Identified process improvements and collaborated with cross-functional teams to gather requirements and improve operational efficiency.',
-    ],
-  },
-];
+// First few courses as chips; the rest open with a "+ N more" toggle.
+const Courses = ({ courses }) => {
+  const [open, setOpen] = useState(false);
+  const hidden = courses.length - COURSES_SHOWN;
+  const visible = open ? courses : courses.slice(0, COURSES_SHOWN);
+
+  return (
+    <div className="entry-courses">
+      <span className="entry-courses-label">Coursework</span>
+      <ul className="course-list">
+        {visible.map((course, idx) => (
+          <li
+            key={course}
+            className="course"
+            style={{ animationDelay: idx >= COURSES_SHOWN ? `${(idx - COURSES_SHOWN) * 35}ms` : '0ms' }}
+          >
+            {course}
+          </li>
+        ))}
+        {hidden > 0 && (
+          <li>
+            <button
+              type="button"
+              className="course-toggle"
+              aria-expanded={open}
+              onClick={() => setOpen((prev) => !prev)}
+            >
+              {open ? '− Show less' : `+ ${hidden} more`}
+            </button>
+          </li>
+        )}
+      </ul>
+    </div>
+  );
+};
+
+const Entry = ({ item }) => (
+  <Reveal as="li" className="entry">
+    <p className="entry-when">{item.when}</p>
+    <h4 className="entry-role">
+      {item.role} <span className="entry-org">· {item.org}</span>
+    </h4>
+    {item.text && <p className="entry-text">{item.text}</p>}
+    {item.courses && <Courses courses={item.courses} />}
+  </Reveal>
+);
 
 const EducationAndExperience = () => {
   return (
-    <div className="edu-exp-wrapper">
-      <div className="edu-exp-column">
-        <Reveal as="h3" className="edu-exp-heading">Education</Reveal>
-        <div className="timeline-wrapper">
-          {EDUCATION.map((item, idx) => (
-            <Timeline key={item.title} {...item} delay={idx * 100} isLast={idx === EDUCATION.length - 1} />
-          ))}
-        </div>
+    <div className="edu-exp">
+      <div>
+        <h3 className="edu-exp-heading">Experience</h3>
+        <ul className="entry-list">
+          {EXPERIENCE.map((item) => <Entry key={item.role} item={item} />)}
+        </ul>
       </div>
-
-      <div className="edu-exp-column">
-        <Reveal as="h3" className="edu-exp-heading">Experience</Reveal>
-        <div className="timeline-wrapper">
-          {EXPERIENCE.map((item, idx) => (
-            <Timeline key={item.title} {...item} delay={idx * 80} isLast={idx === EXPERIENCE.length - 1} />
-          ))}
-        </div>
+      <div>
+        <h3 className="edu-exp-heading">Education</h3>
+        <ul className="entry-list">
+          {EDUCATION.map((item) => <Entry key={item.role} item={item} />)}
+        </ul>
       </div>
     </div>
   );

@@ -1,0 +1,29 @@
+.ambient {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* soft warm light; positioned by JS at the cursor (centered via negative margin) */
+.ambient-light {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 720px;
+    height: 720px;
+    margin: -360px 0 0 -360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--spotlight), transparent 65%);
+    transform: translate3d(70vw, 30vh, 0);
+    will-change: transform;
+}
+
+/* fine film grain from an inline SVG noise filter */
+.ambient-grain {
+    position: absolute;
+    inset: -50%;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}

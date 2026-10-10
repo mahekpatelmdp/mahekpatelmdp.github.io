@@ -1,59 +1,41 @@
 import './ContactSection.css';
-import SectionBadge from '../UI/SectionBadge';
 import Reveal from '../UI/Reveal';
-import { FaPhoneAlt, FaEnvelope, FaLinkedinIn, FaMapMarkerAlt } from 'react-icons/fa';
 
 const CONTACT_ROWS = [
-  {
-    icon: <FaPhoneAlt />,
-    label: 'Phone',
-    value: '778-955-1108',
-    href: 'tel:+17789551108',
-  },
-  {
-    icon: <FaEnvelope />,
-    label: 'Email',
-    value: 'mahekpatel.mdp@gmail.com',
-    href: 'mailto:mahekpatel.mdp@gmail.com',
-  },
-  {
-    icon: <FaLinkedinIn />,
-    label: 'LinkedIn',
-    value: 'linkedin.com/in/mahek-patel-8ba264286',
-    href: 'https://www.linkedin.com/in/mahek-patel-8ba264286',
-  },
+  { label: 'Email', value: 'mahekpatel.mdp@gmail.com', href: 'mailto:mahekpatel.mdp@gmail.com' },
+  { label: 'Phone', value: '778-955-1108', href: 'tel:+17789551108' },
+  { label: 'LinkedIn', value: 'linkedin.com/in/mahek-patel-8ba264286', href: 'https://www.linkedin.com/in/mahek-patel-8ba264286' },
+  { label: 'Resume', value: 'Download PDF', href: `${process.env.PUBLIC_URL}/Mahek_Patel_Resume.pdf`, download: 'Mahek_Patel_Resume.pdf' },
 ];
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="contact-section px-6 lg:px-16 py-24">
+    <section id="contact" className="page-section contact">
       <Reveal>
-        <SectionBadge label="Contact" highlight="Info" />
+        <span className="eyebrow">Contact</span>
+        <h2 className="section-title contact-title">Get in touch</h2>
+        <p className="section-intro">
+          Based in Greater Vancouver, BC, and available for on-site, hybrid or remote roles. Email is the
+          best way to reach me.
+        </p>
       </Reveal>
 
-      <div className="contact-grid mt-12">
-        <Reveal className="contact-heading">
-          <h2>
-            Let&apos;s <span className="accent">connect</span> and<br />
-            work <span className="accent">together</span>!
-          </h2>
-          <p className="contact-location">
-            <FaMapMarkerAlt /> Vancouver, BC, Canada
-          </p>
-        </Reveal>
-
-        <Reveal delay={150} className="contact-rows">
-          {CONTACT_ROWS.map((row) => (
-            <a key={row.label} href={row.href} target={row.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="contact-row">
-              <span>
-                <span className="contact-row-label">{row.label}</span>
-                <span className="contact-row-value">{row.value}</span>
-              </span>
-              <span className="contact-row-icon">{row.icon}</span>
+      <Reveal delay={120} as="ul" className="contact-list">
+        {CONTACT_ROWS.map((row) => (
+          <li key={row.label} className="contact-row">
+            <span className="contact-label">{row.label}</span>
+            <a
+              href={row.href}
+              className="text-link contact-value"
+              target={row.href.startsWith('http') ? '_blank' : undefined}
+              download={row.download}
+              rel="noopener noreferrer"
+            >
+              {row.value}
             </a>
-          ))}
-        </Reveal>
-      </div>
+          </li>
+        ))}
+      </Reveal>
     </section>
   );
 };

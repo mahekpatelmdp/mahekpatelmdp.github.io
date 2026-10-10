@@ -1,17 +1,22 @@
 import './Background.css';
-import SectionBadge from '../UI/SectionBadge';
 import Reveal from '../UI/Reveal';
 import EducationAndExperience from './EducationAndExperience';
+import Certifications from './Certifications';
+import Skills from '../Projects/Skills';
 
 const Background = () => {
   return (
-    <section id="background" className="background-section px-6 lg:px-16 py-24">
+    <section id="experience" className="page-section">
       <Reveal>
-        <SectionBadge label="Education &" highlight="Experience" />
+        <span className="eyebrow">Background</span>
+        <h2 className="section-title">Experience and education</h2>
       </Reveal>
 
-      <div className="mt-14">
-        <EducationAndExperience />
+      <EducationAndExperience />
+
+      <div className="background-extras">
+        <Certifications />
+        <Skills />
       </div>
     </section>
   );

@@ -1,16 +1,25 @@
 footer {
     width: 100%;
-    background-color: var(--navy-950);
-    border-top: 1px solid var(--border-color);
-    padding: 1.25rem 1.5rem;
+    margin-top: auto;
+    border-top: 1px solid var(--rule);
     color: var(--text-tertiary);
-    font-size: 0.85rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
 }
 
 .footer-inner {
-    max-width: 1280px;
+    max-width: var(--max-width);
     margin: 0 auto;
+    padding: 1.75rem 1.5rem;
     display: flex;
-    justify-content: center;
-    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .footer-inner {
+        padding: 1.75rem 2.5rem;
+    }
 }

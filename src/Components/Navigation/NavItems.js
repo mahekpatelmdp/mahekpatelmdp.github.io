@@ -1,9 +1,9 @@
 import NavigationLink from './NavigationLink';
 
-const NAV_LINKS = [
-  { name: 'Home', link: '#home' },
-  { name: 'Skills', link: '#skills' },
-  { name: 'Background', link: '#background' },
+export const NAV_LINKS = [
+  { name: 'Experience', link: '#experience' },
+  { name: 'About', link: '#about' },
+  { name: 'Projects', link: '#projects' },
   { name: 'Contact', link: '#contact' },
 ];
 
@@ -22,6 +22,7 @@ const NavItems = (props) => {
           clickHandle={props.hideNavigation}
           name={item.name}
           link={item.link}
+          isActive={props.active === item.link}
         />
       ))}
     </nav>

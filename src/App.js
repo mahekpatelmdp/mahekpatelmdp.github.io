@@ -1,4 +1,3 @@
-import './App.css';
 import {
   createBrowserRouter,
   Outlet,
@@ -9,6 +8,7 @@ import Homepage from './pages/Homepage';
 import NavBar from './Components/Navigation/Navbar';
 import Error404 from './Components/Error/Error404';
 import Footer from './Components/Footer/Footer';
+import AmbientBackground from './Components/UI/AmbientBackground';
 
 function App() {
   const router = createBrowserRouter([
@@ -43,7 +43,10 @@ function App() {
 
   return (
     <div className="main">
-      <RouterProvider router={router} />
+      <AmbientBackground />
+      <div className="app-content">
+        <RouterProvider router={router} />
+      </div>
     </div>
   );
 }

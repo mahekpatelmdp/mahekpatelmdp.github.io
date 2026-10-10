@@ -1,200 +1,222 @@
-.hero-wrapper {
+.hero {
     position: relative;
-    max-width: 1280px;
-    margin: 0 auto;
-}
-
-.hero-about {
-    margin-top: 5rem;
-}
-
-@media (min-width: 1024px) {
-    .hero-about {
-        margin-top: 6rem;
-    }
-}
-
-.hero-about-copy {
-    margin-top: 1.5rem;
-}
-
-.hero-about-copy p {
-    font-size: 1.05rem;
-    line-height: 1.85;
-    color: var(--text-secondary);
-    max-width: 52rem;
-    margin: 0 auto 1.25rem;
-}
-
-@media (min-width: 1024px) {
-    .hero-about-copy p {
-        margin-left: 0;
-        margin-right: 0;
-    }
-}
-
-.hero-about-copy .accent {
-    color: var(--gold-400);
-    font-weight: 600;
-}
-
-.hero-name {
+    min-height: calc(100vh - 72px);
+    min-height: calc(100svh - 72px);
     display: flex;
     flex-direction: column;
-    font-weight: 800;
-    line-height: 1.05;
-    font-size: 3.4rem;
+    justify-content: center;
+    padding-bottom: 7rem;
+}
+
+.hero-inner {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 3rem 1.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .hero-inner {
+        padding: 3rem 2.5rem 0;
+        grid-template-columns: minmax(0, 1.35fr) minmax(260px, 1fr);
+        gap: 4.5rem;
+    }
+}
+
+/* photo sits above the text on small screens */
+.hero-portrait {
+    order: -1;
+}
+
+@media (min-width: 900px) {
+    .hero-portrait {
+        order: 0;
+    }
+}
+
+.hero-greeting {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1;
+    color: var(--text-secondary);
+}
+
+.hero-title {
+    margin-top: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(3.2rem, 9vw, 6.6rem);
+    line-height: 1;
     letter-spacing: -0.02em;
     color: var(--text-primary);
 }
 
-.hero-name .accent {
-    color: var(--gold-500);
+/* each word slides up from behind its own mask */
+.word {
+    display: inline-block;
+    overflow: hidden;
+    padding-bottom: 0.08em;
+    margin-right: 0.22em;
+    vertical-align: top;
 }
 
-@media (min-width: 640px) {
-    .hero-name {
-        font-size: 4.6rem;
-    }
+.word-inner {
+    display: inline-block;
+    transform: translateY(105%);
+    animation: word-rise 1s var(--ease) forwards;
 }
 
-@media (min-width: 1024px) {
-    .hero-name {
-        font-size: 5.6rem;
-    }
+.word-inner.accent {
+    font-style: italic;
+    color: var(--accent);
 }
 
-.hero-tagline {
+@keyframes word-rise {
+    to { transform: translateY(0); }
+}
+
+.hero-intro {
     margin-top: 1.75rem;
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
     max-width: 34rem;
-}
-
-.hero-tagline .accent {
-    color: var(--gold-500);
-    font-weight: 600;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
 }
 
 .hero-actions {
-    margin-top: 2.5rem;
+    margin-top: 2.25rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+    gap: 0.75rem;
 }
 
-.btn {
-    display: inline-block;
-    padding: 0.85rem 1.9rem;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    border: 1.5px solid var(--gold-500);
-}
-
-.btn-solid {
-    background: var(--gold-500);
-    color: var(--navy-900);
-}
-
-.btn-solid:hover {
-    background: var(--gold-400);
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    background: transparent;
-    color: var(--gold-400);
-}
-
-.btn-outline:hover {
-    background: rgba(45, 212, 191, 0.1);
-    transform: translateY(-2px);
-}
-
-.hero-socials {
-    margin-top: 2.5rem;
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-@media (min-width: 1024px) {
-    .hero-actions,
-    .hero-socials {
-        justify-content: flex-start;
-    }
-}
-
-.social-circle {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1.5px solid var(--border-color-strong);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-primary);
-    font-size: 1rem;
-    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-
-.social-circle:hover {
-    border-color: var(--gold-500);
-    color: var(--gold-400);
-    transform: translateY(-2px);
-}
-
-.hero-image-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-@media (min-width: 1024px) {
-    .hero-image-wrapper {
-        width: auto;
-    }
-}
-
-.hero-photo-frame {
+/* ---- portrait: arch frame with an offset outline that settles into place ---- */
+.hero-portrait {
     position: relative;
-    width: min(280px, 100%);
+    width: min(300px, 70vw);
+    justify-self: center;
+    margin: 0;
 }
 
-.hero-photo-frame::before {
-    content: '';
-    position: absolute;
-    inset: -12%;
-    background: radial-gradient(circle at 50% 42%, rgba(24, 158, 133, 0.24), rgba(24, 158, 133, 0) 70%);
-    filter: blur(24px);
-    z-index: 0;
-}
-
-@media (min-width: 640px) {
-    .hero-photo-frame {
-        width: 320px;
+@media (min-width: 900px) {
+    .hero-portrait {
+        width: 100%;
+        max-width: 380px;
     }
 }
 
-@media (min-width: 1024px) {
-    .hero-photo-frame {
-        width: 380px;
-    }
-}
-
-.hero-photo-frame img {
+.hero-portrait-frame {
     position: relative;
-    z-index: 1;
-    display: block;
+    overflow: hidden;
+    border-radius: 999px 999px 6px 6px;
+    aspect-ratio: 4 / 5;
+    opacity: 0;
+    animation: portrait-in 1.2s var(--ease) 0.3s forwards;
+}
+
+.hero-portrait-frame img {
     width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
+    height: 100%;
     object-fit: cover;
-    -webkit-mask-image: radial-gradient(ellipse 66% 76% at 50% 42%, black 58%, transparent 100%);
-    mask-image: radial-gradient(ellipse 66% 76% at 50% 42%, black 58%, transparent 100%);
+    object-position: 50% 22%;
+    transform: scale(1.12);
+    animation: portrait-zoom 1.8s var(--ease) 0.3s forwards;
+    transition: transform 0.8s var(--ease);
+}
+
+.hero-portrait:hover .hero-portrait-frame img {
+    transform: scale(1.04);
+}
+
+.hero-portrait-outline {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--accent);
+    border-radius: 999px 999px 6px 6px;
+    opacity: 0;
+    transform: translate(0, 0);
+    animation: outline-in 1.4s var(--ease) 0.9s forwards;
+    transition: transform 0.6s var(--ease);
+}
+
+.hero-portrait:hover .hero-portrait-outline {
+    transform: translate(10px, 10px);
+}
+
+@keyframes portrait-in {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes portrait-zoom {
+    to { transform: scale(1); }
+}
+
+@keyframes outline-in {
+    from { opacity: 0; transform: translate(0, 0); }
+    to { opacity: 0.6; transform: translate(14px, 14px); }
+}
+
+/* ---- heartbeat line along the bottom of the hero ---- */
+.ecg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1.5rem;
+    width: 100%;
+    height: 90px;
+    overflow: visible;
+}
+
+.ecg path {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.ecg-base {
+    stroke: var(--rule-strong);
+    stroke-width: 1;
+}
+
+/* a short bright segment travels along the trace */
+.ecg-pulse {
+    stroke: var(--accent);
+    stroke-width: 1.6;
+    stroke-dasharray: 70 930;
+    stroke-dashoffset: 1000;
+    animation: ecg-travel 7s linear infinite;
+    filter: drop-shadow(0 0 4px var(--accent));
+}
+
+@keyframes ecg-travel {
+    to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .word-inner,
+    .hero-portrait-frame,
+    .hero-portrait-frame img {
+        animation: none;
+        transform: none;
+        opacity: 1;
+    }
+
+    .hero-portrait-outline {
+        animation: none;
+        opacity: 0.6;
+        transform: translate(14px, 14px);
+    }
+
+    .ecg-pulse {
+        animation: none;
+        stroke-dasharray: none;
+        opacity: 0.35;
+    }
 }
