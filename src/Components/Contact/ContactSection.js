@@ -4,7 +4,7 @@ import Reveal from '../UI/Reveal';
 const CONTACT_ROWS = [
   { label: 'Email', value: 'mahekpatel.mdp@gmail.com', href: 'mailto:mahekpatel.mdp@gmail.com' },
   { label: 'Phone', value: '778-955-1108', href: 'tel:+17789551108' },
-  { label: 'LinkedIn', value: 'linkedin.com/in/mahek-patel-8ba264286', href: 'https://www.linkedin.com/in/mahek-patel-8ba264286' },
+  { label: 'LinkedIn', value: 'linkedin.com/in/mahek-patel-mdp', href: 'https://www.linkedin.com/in/mahek-patel-mdp' },
   { label: 'Resume', value: 'Download PDF', href: `${process.env.PUBLIC_URL}/Mahek_Patel_Resume.pdf`, download: 'Mahek_Patel_Resume.pdf' },
 ];
 
