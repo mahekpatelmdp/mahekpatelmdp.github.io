@@ -2,9 +2,8 @@ import NavigationLink from './NavigationLink';
 
 export const NAV_LINKS = [
   { name: 'Experience', link: '#experience' },
-  { name: 'About', link: '#about' },
   { name: 'Projects', link: '#projects' },
-  { name: 'Contact', link: '#contact' },
+  { name: 'About', link: '#about' },
 ];
 
 const NavItems = (props) => {

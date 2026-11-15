@@ -15,42 +15,42 @@ const PROJECTS = [
     image: bannerPharma,
     tag: 'Pharma & Life Sciences',
     title: 'Pharma Inventory & Sales Analytics',
-    summary: 'Transformed a raw pharmaceutical database export into structured inventory, sales, and balance-tracking dashboards for stock and sales performance.',
-    tools: ['SQL', 'TypeScript', 'Data Transformation', 'Data Modeling', 'ETL', 'Data Validation'],
+    summary: 'Turned a raw pharmaceutical database export into dashboards for inventory, sales and stock balances.',
+    tools: ['SQL', 'TypeScript', 'ETL', 'Data Modeling', 'Data Validation'],
   },
   {
     image: bannerHealthcare,
     tag: 'Healthcare',
     title: 'Healthcare Predictive Modeling & EDA',
-    summary: 'Applied predictive modeling and exploratory data analysis to healthcare datasets to surface patterns and inform further research.',
-    tools: ['Python', 'R', 'EDA', 'Predictive Modeling', 'Statistical Analysis', 'Telehealth / Digital Health Platforms'],
+    summary: 'Used predictive modeling and exploratory analysis to find patterns in healthcare datasets.',
+    tools: ['Python', 'R', 'EDA', 'Statistical Analysis'],
     link: 'https://github.com/mahekpatelmdp/Predictive-Modeling-Healthcare-Data-Analysis',
   },
   {
     tag: 'Healthcare',
     title: 'Hospital Payments Data Pipeline',
-    summary: 'Simulated a data engineering workflow for healthcare claims: generated and cleaned raw hospital payment data in Python, then transformed it into a dimensional model on BigQuery.',
-    tools: ['Python', 'BigQuery', 'ETL', 'Dimensional Modeling', 'SQL'],
+    summary: 'Generated and cleaned simulated hospital payment data in Python, then built a dimensional model on BigQuery.',
+    tools: ['Python', 'BigQuery', 'ETL', 'SQL'],
     link: 'https://github.com/mahekpatelmdp/hospital-payments-bigquery',
   },
   {
     tag: 'Healthcare',
     title: 'Hospital Payments Visualization',
-    summary: 'Analyzed hospital payment patterns in Tableau to uncover trends in how hospitals charge and receive payments for medical services.',
-    tools: ['Tableau', 'Data Visualization', 'Healthcare Analytics'],
+    summary: 'Used Tableau to show trends in how hospitals charge and get paid for medical services.',
+    tools: ['Tableau', 'Healthcare Analytics'],
     link: 'https://github.com/mahekpatelmdp/hospital-payments-viz',
   },
   {
     tag: 'Healthcare',
     title: 'Patient Readmission Predictor',
-    summary: 'Built a predictive model to flag patients at elevated risk of hospital readmission from clinical and demographic features.',
-    tools: ['Python', 'Jupyter Notebook', 'Predictive Modeling', 'Machine Learning'],
+    summary: 'Built a model to flag patients at high risk of hospital readmission from clinical and demographic data.',
+    tools: ['Python', 'Jupyter Notebook', 'Machine Learning'],
     link: 'https://github.com/mahekpatelmdp/patient-readmission-predictor',
   },
   {
     tag: 'Healthcare',
     title: 'EHR Adoption Analysis',
-    summary: 'Analyzed EHR adoption trends through a Snowflake-based data pipeline for querying and reporting.',
+    summary: 'Analyzed EHR adoption trends with a Snowflake data pipeline.',
     tools: ['Python', 'Snowflake', 'SQL'],
     link: 'https://github.com/mahekpatelmdp/ehr-adoption-snowflake',
   },
@@ -108,7 +108,6 @@ const Projects = () => {
     <section id="projects" className="page-section">
       <Reveal className="projects-head">
         <div>
-          <span className="eyebrow">Projects</span>
           <h2 className="section-title">Projects</h2>
         </div>
         <a href="https://github.com/mahekpatelmdp" target="_blank" rel="noopener noreferrer" className="github-profile">

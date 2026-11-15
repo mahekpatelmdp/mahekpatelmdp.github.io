@@ -4,31 +4,8 @@
 
 /* Warm, mostly neutral palette with a single sand accent used sparingly. */
 
-/* ---- dark theme (default) ---- */
+/* ---- light theme (the only theme) ---- */
 :root {
-    color-scheme: dark;
-
-    --bg: #0f0e0d;
-    --bg-raised: #161513;
-    --text-primary: #ece9e4;
-    --text-secondary: #a19d96;
-    --text-tertiary: #6e6a64;
-    --accent: #d8b98a;
-    --accent-soft: rgba(216, 185, 138, 0.14);
-    --rule: rgba(236, 233, 228, 0.1);
-    --rule-strong: rgba(236, 233, 228, 0.2);
-    --surface-navbar: rgba(15, 14, 13, 0.78);
-    --spotlight: rgba(216, 185, 138, 0.07);
-    --grain-opacity: 0.06;
-
-    --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
-    --max-width: 1120px;
-}
-
-/* ---- light theme (opt-in via toggle) ---- */
-:root[data-theme='light'] {
     color-scheme: light;
 
     --bg: #f6f3ee;
@@ -41,13 +18,16 @@
     --rule: rgba(28, 26, 23, 0.1);
     --rule-strong: rgba(28, 26, 23, 0.2);
     --surface-navbar: rgba(246, 243, 238, 0.85);
-    --spotlight: rgba(154, 107, 47, 0.06);
-    --grain-opacity: 0.05;
+
+    --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --max-width: 1120px;
 }
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 72px;
+    scroll-padding-top: 64px;
 }
 
 html, body, .main, #root {
@@ -95,27 +75,16 @@ body {
 .page-section {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 6rem 1.5rem;
+    padding: 3.5rem 1.5rem;
 }
 
 @media (min-width: 768px) {
     .page-section {
-        padding: 8rem 2.5rem;
+        padding: 4.5rem 2.5rem;
     }
 }
 
-/* small uppercase label above a section title */
-.eyebrow {
-    display: block;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-}
-
 .section-title {
-    margin-top: 0.75rem;
     font-family: var(--font-display);
     font-weight: 400;
     font-size: clamp(2.4rem, 5.5vw, 3.6rem);
@@ -201,31 +170,6 @@ body {
 
     .reveal {
         opacity: 1;
-        transform: none;
-        transition: none;
-    }
-}
-
-/* divider that draws in from the left when its row scrolls into view */
-.entry::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background: var(--rule);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 1.2s var(--ease) 0.15s;
-}
-
-.entry.in-view::after {
-    transform: scaleX(1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .entry::after {
         transform: none;
         transition: none;
     }

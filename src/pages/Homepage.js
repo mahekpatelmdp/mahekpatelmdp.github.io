@@ -3,7 +3,6 @@ import HeroBanner from '../Components/HeroBanner/HeroBanner';
 import Projects from '../Components/Projects/Projects';
 import AboutMe from '../Components/About/AboutMe';
 import Background from '../Components/About/Background';
-import ContactSection from '../Components/Contact/ContactSection';
 
 const Homepage = () => {
   return (
@@ -13,9 +12,8 @@ const Homepage = () => {
       </Helmet>
       <HeroBanner />
       <Background />
-      <AboutMe />
       <Projects />
-      <ContactSection />
+      <AboutMe />
     </>
   );
 };

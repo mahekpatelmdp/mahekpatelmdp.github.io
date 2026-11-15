@@ -2,32 +2,32 @@ import { useState } from 'react';
 import './EducationAndExperience.css';
 import Reveal from '../UI/Reveal';
 
-const COURSES_SHOWN = 5;
+const COURSES_SHOWN = 3;
 
 const EXPERIENCE = [
   {
     when: '2026 to now · Remote',
     role: 'Healthcare LLM Evaluator',
     org: 'Outlier',
-    text: 'Writing step-by-step answers to public health and medical questions, and evaluating model outputs for accuracy, misinformation and health equity.',
+    text: 'Writing answers to medical and public health questions, and rating AI responses for accuracy, misinformation and health equity.',
   },
   {
     when: 'Jan 2025 to Oct 2025 · Springfield, IL',
     role: 'Research Coordinator',
     org: 'University of Illinois Springfield',
-    text: 'Ran data collection, analysis and database management for ongoing demographic studies, and worked with faculty to present the findings.',
+    text: 'Ran data collection, analysis and database work for demographic studies, and helped faculty present the findings.',
   },
   {
     when: 'Sep 2023 to Nov 2024 · Seattle, WA',
     role: 'Clinical Coordinator',
     org: 'Smileworks Dental Clinic',
-    text: 'Coordinated patient care across local facilities with multidisciplinary teams, and handled scheduling, resource planning and reporting.',
+    text: 'Coordinated patient care with multidisciplinary teams, and handled scheduling, resource planning and reporting.',
   },
   {
     when: 'Aug 2022 to Sep 2023 · India',
     role: 'Dentist',
     org: 'Vinayak Dental Clinic',
-    text: 'Performed restorations, extractions, scaling, root canals and prosthetic fittings, using ClareDent for scheduling, charting and treatment plans.',
+    text: 'Performed restorations, extractions, scaling, root canals and prosthetic fittings, and used ClareDent for charting and scheduling.',
   },
 ];
 
@@ -89,12 +89,8 @@ const Courses = ({ courses }) => {
     <div className="entry-courses">
       <span className="entry-courses-label">Coursework</span>
       <ul className="course-list">
-        {visible.map((course, idx) => (
-          <li
-            key={course}
-            className="course"
-            style={{ animationDelay: idx >= COURSES_SHOWN ? `${(idx - COURSES_SHOWN) * 35}ms` : '0ms' }}
-          >
+        {visible.map((course) => (
+          <li key={course} className="course">
             {course}
           </li>
         ))}

@@ -1,19 +1,41 @@
+/* Phones: title, story, then contact.
+   Desktop: title with contact underneath on the left, story on the right. */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-areas:
+        'head'
+        'copy'
+        'contact';
+    gap: 1.75rem;
+}
+
+.about-head {
+    grid-area: head;
+}
+
+.about-copy {
+    grid-area: copy;
+}
+
+.about-contact {
+    grid-area: contact;
 }
 
 @media (min-width: 900px) {
     .about-grid {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
-        gap: 5rem;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            'head copy'
+            'contact copy';
+        column-gap: 3.5rem;
+        row-gap: 1.5rem;
     }
 
-    .about-head {
-        position: sticky;
-        top: 6rem;
-        align-self: start;
+    /* line the story's first line up with the title instead of the top of the box */
+    .about-copy {
+        padding-top: 0.6rem;
     }
 }
 
@@ -23,5 +45,5 @@
 }
 
 .about-copy p + p {
-    margin-top: 1.25rem;
+    margin-top: 1rem;
 }

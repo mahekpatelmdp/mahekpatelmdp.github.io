@@ -1,12 +1,13 @@
 .background-extras {
-    margin-top: 4rem;
+    margin-top: 2.75rem;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 4rem;
+    gap: 2.5rem;
 }
 
 @media (min-width: 900px) {
     .background-extras {
         grid-template-columns: 1fr 1fr;
+        gap: 3rem;
     }
 }

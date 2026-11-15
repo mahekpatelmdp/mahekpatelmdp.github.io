@@ -1,38 +1,38 @@
-.contact-title {
-    font-size: clamp(3rem, 8vw, 5.5rem);
+.contact-intro {
+    font-size: 1.02rem;
+    color: var(--text-primary);
 }
 
 .contact-list {
-    margin-top: 3rem;
+    margin-top: 0.9rem;
     border-top: 1px solid var(--rule);
-    max-width: 44rem;
 }
 
 .contact-row {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0.25rem;
-    padding: 1.15rem 0;
+    gap: 0.2rem;
+    padding: 0.8rem 0;
     border-bottom: 1px solid var(--rule);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 480px) {
     .contact-row {
-        grid-template-columns: 8rem 1fr;
+        grid-template-columns: 5.5rem 1fr;
         align-items: baseline;
     }
 }
 
 .contact-label {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--text-tertiary);
 }
 
 .contact-value {
     justify-self: start;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     overflow-wrap: anywhere;
 }

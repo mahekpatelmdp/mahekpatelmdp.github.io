@@ -8,7 +8,6 @@ const Background = () => {
   return (
     <section id="experience" className="page-section">
       <Reveal>
-        <span className="eyebrow">Background</span>
         <h2 className="section-title">Experience and education</h2>
       </Reveal>
 

@@ -1,29 +1,32 @@
 import './AboutMe.css';
 import Reveal from '../UI/Reveal';
+import ContactDetails from '../Contact/ContactDetails';
 
 const AboutMe = () => {
   return (
     <section id="about" className="page-section">
       <div className="about-grid">
         <Reveal className="about-head">
-          <span className="eyebrow">About</span>
           <h2 className="section-title">About me</h2>
         </Reveal>
 
         <Reveal delay={120} className="about-copy">
           <p>
-            Healthcare professional with expertise in dentistry, health informatics, healthcare AI, and
-            compliance. I apply clinical knowledge to data and technology, with a strong focus on
-            accuracy, ethics, privacy, and patient care.
+            On the data side, I work with SQL, Python, Tableau and Power BI, and I know my way around EHR
+            systems, patient privacy rules like HIPAA, and health data standards like HL7 and FHIR.
           </p>
           <p>
-            I value precision, evidence-based thinking, and clear communication across clinical,
-            technical, and regulatory teams.
+            I care about getting the details right, keeping patient information private and explaining
+            things clearly, whether I&apos;m talking to a patient, a clinician or a tech team.
           </p>
           <p>
-            Outside of work, I keep up with where medicine is heading, and I am open to volunteering for
-            causes in health, medical research, workforce development, and science and technology.
+            Outside work, I like keeping up with what&apos;s new in medicine, and I&apos;d be glad to
+            volunteer in health, medical research, workforce development, or science and tech.
           </p>
+        </Reveal>
+
+        <Reveal delay={200} className="about-contact">
+          <ContactDetails />
         </Reveal>
       </div>
     </section>

@@ -1,12 +1,9 @@
 import './Skills.css';
 import Reveal from '../UI/Reveal';
 
+// Procedures like extractions and root canals are listed under the Dentist role, so they are not repeated here.
 const CLINICAL = [
   'Restorations',
-  'Extractions',
-  'Scaling & Root Planing',
-  'Root Canal Treatment',
-  'Prosthetic Fittings',
   'Treatment Planning',
   'Infection Control',
   'Patient Education',
@@ -18,18 +15,15 @@ const TOOLS = [
   'Python',
   'R',
   'Excel (VBA)',
-  'Google Sheets',
   'BigQuery',
   'Snowflake',
   'SAP',
-  'VS Code',
   'Salesforce CRM',
   'JIRA',
   'Tableau',
   'Power BI',
   'Looker Studio',
-  'LLM Tools',
-  'Claude',
+  'LLM tools (Claude)',
 ];
 
 const METHODS = [
@@ -37,29 +31,24 @@ const METHODS = [
   'EDA',
   'Segmentation / Clustering',
   'Cohort Analysis',
-  'Linear Regression',
-  'Logistic Regression',
+  'Linear & Logistic Regression',
   'A/B Testing',
-  'ANOVA & Post-Hoc T-Test',
-  'Statistical Analysis',
+  'ANOVA',
   'Root Cause Analysis',
   'Data Modeling',
   'ETL',
   'Data Validation',
-  'Data Mining (SAS Enterprise Miner)',
+  'Data Mining (SAS)',
 ];
 
 const HEALTHCARE = [
   'EHR / EMR Systems (ClareDent)',
-  'HL7 & FHIR Interoperability',
-  'Health Information Exchange (HIE)',
+  'HL7, FHIR & HIE',
   'HIPAA & Patient Data Privacy',
-  'Healthcare System Analysis & Design',
   'Telehealth / Digital Health Platforms',
   'Clinical Data Management',
   'Healthcare Compliance',
-  'Records Management',
-  'Clinical Documentation',
+  'Clinical Documentation & Records',
 ];
 
 const HEALTHCARE_AI = [

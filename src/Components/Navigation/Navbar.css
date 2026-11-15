@@ -1,10 +1,13 @@
-/* transparent over the hero, frosted once the page scrolls */
+/* transparent over the hero, frosted once the page scrolls.
+   Side padding lines the nav up with the page's content column. */
 .site-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    min-height: 72px;
+    min-height: 64px;
+    padding-left: max(1.5rem, calc((100% - var(--max-width)) / 2 + 1.5rem));
+    padding-right: max(1.5rem, calc((100% - var(--max-width)) / 2 + 1.5rem));
     background: transparent;
     border-bottom: 1px solid transparent;
     transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
@@ -17,69 +20,12 @@
     border-bottom-color: var(--rule);
 }
 
-.brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: var(--font-display);
-    font-size: 1.45rem;
-    line-height: 1;
-    color: var(--text-primary);
-    text-decoration: none;
-}
-
-
+/* no brand on the left, so keep the actions pinned right on every screen size */
 .site-header-actions {
     display: flex;
     align-items: center;
     gap: 16px;
-}
-
-.resume-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.45rem 0.95rem;
-    border-radius: 999px;
-    background: var(--text-primary);
-    color: var(--bg);
-    font-size: 0.8rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.2s ease, transform 0.2s var(--ease);
-}
-
-.resume-pill:hover {
-    background: var(--accent);
-    transform: translateY(-1px);
-}
-
-.resume-pill span {
-    transition: transform 0.25s var(--ease);
-}
-
-.resume-pill:hover span {
-    transform: translateY(2px);
-}
-
-.theme-toggle {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid var(--rule-strong);
-    background: transparent;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.theme-toggle:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+    margin-left: auto;
 }
 
 .navigation-items {
@@ -156,6 +102,11 @@
 }
 
 @media (min-width: 768px) {
+    .site-header {
+        padding-left: max(2.5rem, calc((100% - var(--max-width)) / 2 + 2.5rem));
+        padding-right: max(2.5rem, calc((100% - var(--max-width)) / 2 + 2.5rem));
+    }
+
     .desktop-navigation {
         display: flex;
     }

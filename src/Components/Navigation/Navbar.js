@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import NavItems, { NAV_LINKS } from './NavItems';
 import { Modal } from '../UI/Modal';
 import { CgClose } from 'react-icons/cg';
-import ThemeToggle from '../UI/ThemeToggle';
 
 // Tracks which section is in the middle of the screen so its nav link can be highlighted.
 const useActiveSection = () => {
@@ -47,22 +46,10 @@ const NavBar = () => {
   const hideNavigationModalHandler = () => setIsNavigationOpen(false);
 
   return (
-    <header className={`site-header sticky top-0 z-50 px-6 md:px-10 ${isScrolled ? 'is-scrolled' : ''}`}>
-      <a href="#home" className="brand" aria-label="Mahek Patel, back to top">
-        Mahek Patel
-      </a>
-
+    <header className={`site-header sticky top-0 z-50 ${isScrolled ? 'is-scrolled' : ''}`}>
       <NavItems modalNavigation={false} active={active} />
 
       <div className="site-header-actions">
-        <a
-          href={`${process.env.PUBLIC_URL}/Mahek_Patel_Resume.pdf`}
-          download="Mahek_Patel_Resume.pdf"
-          className="resume-pill"
-        >
-          Resume <span aria-hidden="true">↓</span>
-        </a>
-        <ThemeToggle />
 
         <button className="hamburger-menu" onClick={showNavigationModalHandler} aria-label="Open menu">
           <GiHamburgerMenu />
