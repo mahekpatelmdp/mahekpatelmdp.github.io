@@ -19,17 +19,29 @@ const HeroBanner = () => {
             Mahek Patel
           </Reveal>
 
-          <Reveal as="p" delay={400} className="hero-intro">
-            I&apos;m a dentist by training, with a master&apos;s in Healthcare Informatics from the
-            University of Illinois Springfield. I&apos;ve worked as a clinical coordinator at a dental clinic
-            in Seattle and as a research coordinator at the university, and I currently evaluate AI
-            responses to medical questions for accuracy and health equity. Based in Vancouver, I focus on
-            work that brings patient care and health data together.
-          </Reveal>
+          <div className="hero-intro">
+            <Reveal as="p" delay={260}>
+              I&apos;m a dentist by training with a master&apos;s in Healthcare Informatics. My background
+              sits between two worlds: the clinic, where I worked directly with patients, and the data and
+              systems that support their care.
+            </Reveal>
+            <Reveal as="p" delay={360}>
+              Whether I&apos;m treating a patient, coordinating a busy clinic schedule or organizing research
+              data, I care about the same things: accurate information, clear communication and respect for
+              patient privacy.
+            </Reveal>
+            <Reveal as="p" delay={460}>
+              I&apos;m based in Vancouver, and I enjoy work where patient care and health data meet.
+            </Reveal>
+          </div>
 
-          <Reveal delay={480} className="hero-actions">
-            <a href="#projects" className="btn btn-primary">View projects</a>
-            <a href="#contact" className="btn btn-quiet">Contact me</a>
+          <Reveal delay={560} className="hero-actions">
+            <a href="#projects" className="btn btn-primary">
+              View projects <span className="link-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a href="#contact" className="btn btn-quiet">
+              Contact me <span className="link-arrow" aria-hidden="true">→</span>
+            </a>
           </Reveal>
         </div>
 

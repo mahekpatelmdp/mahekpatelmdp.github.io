@@ -1,4 +1,5 @@
 import './Certifications.css';
+import { FiAward } from 'react-icons/fi';
 import Reveal from '../UI/Reveal';
 
 const CERTIFICATIONS = [
@@ -19,20 +20,25 @@ const CERTIFICATIONS = [
 const Certifications = () => {
   return (
     <Reveal className="certs">
-      <h3 className="edu-exp-heading">Certifications</h3>
-      <ul className="certs-list" tabIndex={0} aria-label="Certifications, scrollable">
-        {CERTIFICATIONS.map((cert) => (
-          <li key={cert.title} className="cert">
-            <span className="cert-title">{cert.title}</span>
-            <span className="cert-from">
-              <span className="cert-issuer">{cert.issuer}</span>
-              {cert.credentialId && (
-                <span className="cert-meta">Credential ID {cert.credentialId}</span>
-              )}
-            </span>
-          </li>
-        ))}
-      </ul>
+      <h3 className="col-heading">Certifications</h3>
+      <div className="card certs-card">
+        <ul className="certs-list" tabIndex={0} aria-label="Certifications, scrollable">
+          {CERTIFICATIONS.map((cert) => (
+            <li key={cert.title} className="cert">
+              <span className="cert-icon" aria-hidden="true"><FiAward /></span>
+              <span className="cert-body">
+                <span className="cert-title">{cert.title}</span>
+                <span className="cert-from">
+                  <span className="cert-issuer">{cert.issuer}</span>
+                  {cert.credentialId && (
+                    <span className="cert-meta">Credential ID {cert.credentialId}</span>
+                  )}
+                </span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </Reveal>
   );
 };

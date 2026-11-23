@@ -1,7 +1,15 @@
-/* Certifications take the Toolkit's height; the list scrolls inside it. */
+/* Certifications take the Skills card's height on desktop; the list scrolls inside it. */
 .certs {
     display: flex;
     flex-direction: column;
+}
+
+.certs-card {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem 0.5rem 0.4rem 1.1rem;
 }
 
 @media (min-width: 900px) {
@@ -13,18 +21,17 @@
 }
 
 .certs-list {
-    position: relative;
     flex: 1;
     min-height: 0;
     max-height: 26rem;
     overflow-y: auto;
-    padding-right: 0.75rem;
+    padding-right: 0.6rem;
     overscroll-behavior: contain;
     scrollbar-width: thin;
     scrollbar-color: var(--rule-strong) transparent;
     /* fade the last row so it reads as "more below" */
-    -webkit-mask-image: linear-gradient(to bottom, #000 85%, transparent);
-    mask-image: linear-gradient(to bottom, #000 85%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent);
+    mask-image: linear-gradient(to bottom, #000 88%, transparent);
 }
 
 @media (min-width: 900px) {
@@ -36,6 +43,7 @@
 .certs-list:focus-visible {
     outline: 1px solid var(--accent);
     outline-offset: 4px;
+    border-radius: 8px;
 }
 
 .certs-list::-webkit-scrollbar {
@@ -49,14 +57,43 @@
 
 .cert {
     display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-    padding: 0.85rem 0;
+    gap: 0.8rem;
+    align-items: flex-start;
+    padding: 0.8rem 0;
     border-bottom: 1px solid var(--rule);
 }
 
+.cert:last-child {
+    border-bottom: none;
+}
+
+.cert-icon {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    transition: transform 0.4s var(--ease-spring);
+}
+
+.cert:hover .cert-icon {
+    transform: rotate(-10deg) scale(1.08);
+}
+
+.cert-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
 .cert-title {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
     color: var(--text-primary);
 }
 
@@ -65,20 +102,18 @@
     flex-wrap: wrap;
     align-items: baseline;
     gap: 0.25rem 0.75rem;
-    margin-top: 0.2rem;
 }
 
-/* issuing organization: small sand capitals so it reads as the source at a glance */
 .cert-issuer {
     font-size: 0.68rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent);
 }
 
 .cert-meta {
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     color: var(--text-tertiary);
     font-variant-numeric: tabular-nums;
     overflow-wrap: anywhere;

@@ -12,16 +12,18 @@ const AboutMe = () => {
 
         <Reveal delay={120} className="about-copy">
           <p>
-            On the data side, I work with SQL, Python, Tableau and Power BI, and I know my way around EHR
-            systems, patient privacy rules like HIPAA, and health data standards like HL7 and FHIR.
+            Having charted treatments, scheduled appointments and explained procedures to patients myself,
+            I try to remember the people behind every record, report or AI answer I work on. Good health
+            data starts with someone&apos;s visit to a clinic.
           </p>
           <p>
-            I care about getting the details right, keeping patient information private and explaining
-            things clearly, whether I&apos;m talking to a patient, a clinician or a tech team.
+            On the technical side, I use SQL, Python, Tableau and Power BI, and I work with EHR systems,
+            HIPAA privacy rules and standards like HL7 and FHIR. I keep building these skills through
+            projects and coursework, one problem at a time.
           </p>
           <p>
-            Outside work, I like keeping up with what&apos;s new in medicine, and I&apos;d be glad to
-            volunteer in health, medical research, workforce development, or science and tech.
+            Outside work, I follow what&apos;s new in medicine and would be glad to volunteer in health,
+            medical research, workforce development, or science and technology.
           </p>
         </Reveal>
 

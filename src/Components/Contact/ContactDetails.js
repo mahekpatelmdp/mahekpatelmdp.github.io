@@ -22,6 +22,9 @@ const ContactDetails = () => {
               rel="noopener noreferrer"
             >
               {row.value}
+              <span className="link-arrow" aria-hidden="true">
+                {row.href.startsWith('http') ? '↗' : '→'}
+              </span>
             </a>
           </li>
         ))}

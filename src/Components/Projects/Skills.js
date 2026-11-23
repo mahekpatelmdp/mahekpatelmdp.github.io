@@ -66,18 +66,26 @@ const GROUPS = [
   { label: 'Healthcare AI', items: HEALTHCARE_AI },
 ];
 
+// Each group is a row of chips that fade in one after another when the card scrolls into view.
 const Skills = () => {
+  let chipIndex = 0;
   return (
-    <Reveal className="toolkit">
-      <h3 className="edu-exp-heading">Toolkit</h3>
-      <dl className="toolkit-list">
+    <Reveal className="skills">
+      <h3 className="col-heading">Skills</h3>
+      <div className="card skills-card">
         {GROUPS.map((group) => (
-          <div key={group.label} className="toolkit-row">
-            <dt>{group.label}</dt>
-            <dd>{group.items.join(' · ')}</dd>
+          <div key={group.label} className="skill-group">
+            <h4 className="skill-label">{group.label}</h4>
+            <ul className="skill-chips">
+              {group.items.map((item) => (
+                <li key={item} className="skill-chip" style={{ '--i': chipIndex++ }}>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
-      </dl>
+      </div>
     </Reveal>
   );
 };

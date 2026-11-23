@@ -111,13 +111,13 @@ const Projects = () => {
           <h2 className="section-title">Projects</h2>
         </div>
         <a href="https://github.com/mahekpatelmdp" target="_blank" rel="noopener noreferrer" className="github-profile">
-          <FaGithub aria-hidden="true" /> github.com/mahekpatelmdp
+          <FaGithub aria-hidden="true" /> github.com/mahekpatelmdp <span className="link-arrow" aria-hidden="true">↗</span>
         </a>
       </Reveal>
 
       <div className="project-grid">
         {PROJECTS.map((project, idx) => (
-          <Reveal as="article" key={project.title} delay={(idx % 3) * 80} className="project">
+          <Reveal as="article" key={project.title} delay={idx * 90} className="card project">
             <div className="project-top">
               <span className="project-tag">{project.tag}</span>
               {project.link && (

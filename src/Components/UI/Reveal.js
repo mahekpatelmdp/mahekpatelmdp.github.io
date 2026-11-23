@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 const Reveal = ({ children, className = '', delay = 0, as: Tag = 'div', style = {} }) => {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
+  // Once the entrance finishes, drop the stagger delay so hover effects respond instantly.
+  const [settled, setSettled] = useState(false);
 
   useEffect(() => {
     const node = ref.current;
@@ -26,7 +28,10 @@ const Reveal = ({ children, className = '', delay = 0, as: Tag = 'div', style = 
     <Tag
       ref={ref}
       className={`reveal ${inView ? 'in-view' : ''} ${className}`}
-      style={{ ...style, transitionDelay: inView ? `${delay}ms` : '0ms' }}
+      style={{ ...style, transitionDelay: inView && !settled ? `${delay}ms` : '0ms' }}
+      onTransitionEnd={(e) => {
+        if (inView && e.target === ref.current && e.propertyName === 'opacity') setSettled(true);
+      }}
     >
       {children}
     </Tag>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './EducationAndExperience.css';
+import { FiMapPin } from 'react-icons/fi';
 import Reveal from '../UI/Reveal';
 
 const COURSES_SHOWN = 3;
@@ -36,7 +37,7 @@ const EDUCATION = [
     when: '2024 to 2026 · Springfield, IL',
     role: 'M.S. Healthcare Informatics',
     org: 'University of Illinois Springfield',
-    text: 'GPA 3.85.',
+    gpa: '3.85',
     courses: [
       'Healthcare Analytics',
       'Business Analysis',
@@ -89,8 +90,8 @@ const Courses = ({ courses }) => {
     <div className="entry-courses">
       <span className="entry-courses-label">Coursework</span>
       <ul className="course-list">
-        {visible.map((course) => (
-          <li key={course} className="course">
+        {visible.map((course, idx) => (
+          <li key={course} className="course" style={{ '--i': idx }}>
             {course}
           </li>
         ))}
@@ -102,7 +103,7 @@ const Courses = ({ courses }) => {
               aria-expanded={open}
               onClick={() => setOpen((prev) => !prev)}
             >
-              {open ? '− Show less' : `+ ${hidden} more`}
+              {open ? 'Show less' : `+ ${hidden} more`}
             </button>
           </li>
         )}
@@ -111,30 +112,57 @@ const Courses = ({ courses }) => {
   );
 };
 
-const Entry = ({ item }) => (
-  <Reveal as="li" className="entry">
-    <p className="entry-when">{item.when}</p>
-    <h4 className="entry-role">
-      {item.role} <span className="entry-org">· {item.org}</span>
-    </h4>
-    {item.text && <p className="entry-text">{item.text}</p>}
-    {item.courses && <Courses courses={item.courses} />}
-  </Reveal>
-);
+// "Jan 2025 to Oct 2025 · Springfield, IL" -> date and place shown separately
+const When = ({ value, isNow }) => {
+  const [date, place] = value.split(' · ');
+  return (
+    <div className="entry-when">
+      <span className="entry-date">{date}</span>
+      {isNow && <span className="now-badge">Current</span>}
+      {place && (
+        <span className="entry-place">
+          <FiMapPin aria-hidden="true" /> {place}
+        </span>
+      )}
+    </div>
+  );
+};
 
 const EducationAndExperience = () => {
   return (
     <div className="edu-exp">
       <div>
-        <h3 className="edu-exp-heading">Experience</h3>
-        <ul className="entry-list">
-          {EXPERIENCE.map((item) => <Entry key={item.role} item={item} />)}
-        </ul>
+        <Reveal as="h3" className="col-heading">Experience</Reveal>
+        <ol className="timeline">
+          {EXPERIENCE.map((item, idx) => {
+            const isNow = item.when.includes('now');
+            return (
+              <Reveal as="li" key={item.role} delay={idx * 90} className={`tl-item ${isNow ? 'is-now' : ''}`}>
+                <span className="tl-dot" aria-hidden="true" />
+                <div className="card tl-card">
+                  <When value={item.when} isNow={isNow} />
+                  <h4 className="entry-role">{item.role}</h4>
+                  <p className="entry-org">{item.org}</p>
+                  <p className="entry-text">{item.text}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </ol>
       </div>
+
       <div>
-        <h3 className="edu-exp-heading">Education</h3>
-        <ul className="entry-list">
-          {EDUCATION.map((item) => <Entry key={item.role} item={item} />)}
+        <Reveal as="h3" className="col-heading">Education</Reveal>
+        <ul className="edu-list">
+          {EDUCATION.map((item, idx) => (
+            <Reveal as="li" key={item.role} delay={idx * 120} className="card edu-card">
+              <When value={item.when} />
+              <h4 className="entry-role">{item.role}</h4>
+              <p className="entry-org">{item.org}</p>
+              {item.gpa && <span className="gpa-badge">GPA {item.gpa}</span>}
+              {item.courses && <Courses courses={item.courses} />}
+            </Reveal>
+          ))}
         </ul>
       </div>
     </div>
