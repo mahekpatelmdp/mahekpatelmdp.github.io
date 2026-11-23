@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './EducationAndExperience.css';
 import { FiMapPin } from 'react-icons/fi';
 import Reveal from '../UI/Reveal';
+import uisLogo from '../../assets/logo-uis.png';
+import dduLogo from '../../assets/logo-ddu.png';
 
 const COURSES_SHOWN = 3;
 
@@ -37,6 +39,7 @@ const EDUCATION = [
     when: '2024 to 2026 · Springfield, IL',
     role: 'M.S. Healthcare Informatics',
     org: 'University of Illinois Springfield',
+    logo: { src: uisLogo, alt: 'University of Illinois Springfield logo' },
     gpa: '3.85',
     courses: [
       'Healthcare Analytics',
@@ -57,6 +60,8 @@ const EDUCATION = [
     when: 'Jun 2018 to Aug 2023 · Nadiad, India',
     role: 'Bachelor of Dental Surgery (BDS)',
     org: 'Dharmsinh Desai University',
+    // the university only publishes a header strip (emblem + white text); show just the emblem
+    logo: { src: dduLogo, alt: 'Dharmsinh Desai University logo', emblemFromStrip: true },
     courses: [
       'General Human Anatomy',
       'General Human Physiology & Biochemistry',
@@ -128,6 +133,21 @@ const When = ({ value, isNow }) => {
   );
 };
 
+const SchoolLogo = ({ logo }) => (
+  <span className="edu-logo">
+    {logo.emblemFromStrip ? (
+      <span
+        className="edu-logo-emblem"
+        role="img"
+        aria-label={logo.alt}
+        style={{ backgroundImage: `url(${logo.src})` }}
+      />
+    ) : (
+      <img src={logo.src} alt={logo.alt} />
+    )}
+  </span>
+);
+
 const EducationAndExperience = () => {
   return (
     <div className="edu-exp">
@@ -156,9 +176,14 @@ const EducationAndExperience = () => {
         <ul className="edu-list">
           {EDUCATION.map((item, idx) => (
             <Reveal as="li" key={item.role} delay={idx * 120} className="card edu-card">
-              <When value={item.when} />
-              <h4 className="entry-role">{item.role}</h4>
-              <p className="entry-org">{item.org}</p>
+              <div className="edu-head">
+                <div>
+                  <When value={item.when} />
+                  <h4 className="entry-role">{item.role}</h4>
+                  <p className="entry-org">{item.org}</p>
+                </div>
+                {item.logo && <SchoolLogo logo={item.logo} />}
+              </div>
               {item.gpa && <span className="gpa-badge">GPA {item.gpa}</span>}
               {item.courses && <Courses courses={item.courses} />}
             </Reveal>

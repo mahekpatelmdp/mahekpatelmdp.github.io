@@ -209,3 +209,39 @@
         animation: none;
     }
 }
+
+/* ---- school logo tile, top-right of each education card ---- */
+.edu-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.edu-logo {
+    flex: none;
+    width: 52px;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 7px;
+}
+
+.edu-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* the DDU file is a 30px-tall strip; show only its left emblem at native size so it stays sharp */
+.edu-logo-emblem {
+    width: 32px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: auto 30px;
+}
